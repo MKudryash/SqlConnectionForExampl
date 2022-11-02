@@ -20,7 +20,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    View viewMainActivity;
     Connection connection;
     List<Movie> data;
     ListView listView;
@@ -31,14 +30,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewMainActivity = findViewById(com.google.android.material.R.id.ghost_view);
-        GetTextFromSQL(viewMainActivity);
+        GetDataFromSql();
     }
-    public void GetTextFromSQL(View v) {
+    public void GetDataFromSql() {
         data = new ArrayList<Movie>();
         listView = findViewById(R.id.lvData);
-        pAdapter = new AdapterMovie(
-                MainActivity.this, data);
+        pAdapter = new AdapterMovie(MainActivity.this, data);
         try {
             ConnectionHelper connectionHelper = new ConnectionHelper();
             connection = connectionHelper.connectionClass();
@@ -60,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                                     Integer.parseInt(resultSet.getString("YearPremiere"))
                             );
                     data.add(tempMovie);
-                    pAdapter.notifyDataSetInvalidated();
                 }
                 connection.close();
             } else {

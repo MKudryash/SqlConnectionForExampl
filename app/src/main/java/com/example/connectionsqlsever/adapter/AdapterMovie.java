@@ -54,16 +54,14 @@ public class AdapterMovie extends BaseAdapter
         Genre.setText(movie.getGenre()); //присваиваем textView жанр фильма текущего объекта
         Country.setText(movie.getCountry()); //присваиваем textView страну фильма текущего объекта
         YearPremiere.setText(Integer.toString(movie.getYearPremiere())); //присваиваем textView год премьеры фильма текущего объекта
+        if(movie.getImage()!=null && !movie.getImage().equals("null"))
         imageView.setImageBitmap(getUserImage(movie.getImage())); //присваиваем imageView изображения фильма текущего объекта
 
         return view;
     }
     private Bitmap getUserImage(String encodedImg) //метод для рапарсивания строки в изображение
     {
-        if(encodedImg!=null&& !encodedImg.equals("null")) {
             byte[] bytes = Base64.decode(encodedImg, Base64.DEFAULT);
             return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        }
-        else return BitmapFactory.decodeResource(mContext.getResources(),R.drawable.ic_movie); //если в базе пусто будет выведена заглушка
     }
 }
