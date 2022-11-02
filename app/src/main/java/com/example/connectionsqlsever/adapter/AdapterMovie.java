@@ -42,7 +42,7 @@ public class AdapterMovie extends BaseAdapter
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = View.inflate(mContext, R.layout.ss,null); //Создание метода View
+        View view = View.inflate(mContext, R.layout.item_movie,null); //Создание метода View
 
         TextView Title = view.findViewById(R.id.txtTitleMovie); //нахождение textView куда будет положено название
         TextView Genre = view.findViewById(R.id.txtGenreMovie); //нахождение textView куда будет положен тип жанра
